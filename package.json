@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/lonewolfco/teamprofiler#readme",
   "dependencies": {
-    "bootstrap": "^5.1.3"
+    "bootstrap": "^5.1.3",
+    "inquirer": "^8.2.0"
   }
 }
