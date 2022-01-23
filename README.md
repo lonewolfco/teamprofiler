@@ -17,7 +17,11 @@
 
 Node.js command-line application that takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person. This application includes unit testing for each role.
 
-[Walkthrough]()
+To install this application open the application in VSCode and run node on the index.js file in the terminal.
+
+To run the unit tests enter the command run npm test in the terminal window.
+
+[Walkthrough](https://www.loom.com/share/c9286aa11bb2495a9e49ff9d4d476d76)
 
 ## [User Story](#userstory)
 
