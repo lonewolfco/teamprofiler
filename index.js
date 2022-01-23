@@ -2,12 +2,12 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 // link to webpage creator js
-const generateHTML = require ('./src/generateHTML.js');
+const generateHTML = require ('./src/generateHTML');
 // link to team profile js files
 // const Employee = require ('./lib/Employee.js');
-const Engineer = require ('./lib/Engineer.js');
-const Intern = require ('./lib/Intern.js');
-const Manager = require ('./lib/Manager.js');
+const Engineer = require ('./lib/Engineer');
+const Intern = require ('./lib/Intern');
+const Manager = require ('./lib/Manager');
 
 
 
@@ -71,7 +71,7 @@ const managerQuestions = () => {
               return true;
           }
         }
-      },
+      }
     ])
     
     .then(managerInput => {
@@ -199,31 +199,34 @@ const managerQuestions = () => {
         }
     })
 
-};
+// };
 
 
-// .then((answers) => {
+.then((answers) => {
 
-//     const htmlTemplate = generateHTML (answers);
+    const htmlTemplate = generateHTML (answers);
     
     
-//     fs.appendFile('index.html', htmlTemplate (answers), (err) =>
-//         err ? console.error(err) : console.log('Response logged')
+    fs.appendFile('index.html', htmlTemplate, (err) =>
+        err ? console.error(err) : console.log('Response logged')
 
-//   )});
+  )});
 
-const writeFile = data => {
-  fs.writeFile('./dist/index.html', data, err => {
-    // error
-    if (err) {
-      console.log(err);
-      return;
-      // no err
-    } else {
-      console.log("Team Profile Generated");
-    }
-  })
 };
+
+// const writeFile = data => {
+//     const html = generateHTML(data);
+//   fs.writeFile('./dist/index.html', html (data), (err) => {
+//     // error
+//     if (err) {
+//       console.log(err);
+//       return;
+//       // no err
+//     } else {
+//       console.log("Team Profile Generated!");
+//     }
+//   })
+// };
 
 managerQuestions ()
   .then( employeeQuestions )
