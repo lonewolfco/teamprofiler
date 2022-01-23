@@ -2,7 +2,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 // link to webpage creator js
-const generateHtml = require ('./src/generateHTML.js');
+const generateHTML = require ('./src/generateHTML.js');
 // link to team profile js files
 // const Employee = require ('./lib/Employee.js');
 const Engineer = require ('./lib/Engineer.js');
@@ -11,8 +11,8 @@ const Manager = require ('./lib/Manager.js');
 
 
 
-// teamprofile array
-const teamProfile = [];
+// Team Profile array
+const teamProfileArray = [];
 
 
 // manager question prompts
@@ -78,7 +78,7 @@ const managerQuestions = () => {
       const  { name, id, email, officeNum } = managerInput; 
       const manager = new Manager (name, id, email, officeNum);
 
-      teamProfile.push(manager); 
+      teamProfileArray.push(manager); 
       console.log(manager); 
   })
 
@@ -98,7 +98,7 @@ const managerQuestions = () => {
             type: 'list',
             name: 'role',
             message: "What type of Employee is being added?",
-            choices: ['Engineer', 'Intern']
+            choices: ["Engineer", "Intern"]
         },
         {
             type: 'input',
@@ -190,12 +190,12 @@ const managerQuestions = () => {
             console.log(employee);
         }
 
-        teamProfile.push(employee); 
+        teamProfileArray.push(employee); 
 
         if (addMore) {
-            return employeeQuestions(teamProfile); 
+            return employeeQuestions(teamProfileArray); 
         } else {
-            return teamProfile;
+            return teamProfileArray;
         }
     })
 
@@ -204,7 +204,7 @@ const managerQuestions = () => {
 
 // .then((answers) => {
 
-//     const htmlTemplate = generateHtml (answers);
+//     const htmlTemplate = generateHTML (answers);
     
     
 //     fs.appendFile('index.html', htmlTemplate (answers), (err) =>
@@ -212,7 +212,7 @@ const managerQuestions = () => {
 
 //   )});
 
-const htmlTemplate = data => {
+const writeFile = data => {
   fs.writeFile('./dist/index.html', data, err => {
     // error
     if (err) {
@@ -226,9 +226,9 @@ const htmlTemplate = data => {
 };
 
 managerQuestions ()
-  .then(employeeQuestions)
-  .then (teamProfile => {
-    return generateHtml(teamProfile);
+  .then( employeeQuestions )
+  .then (teamProfileArray => {
+    return generateHTML(teamProfileArray);
   })
   .then(webHTML => {
     return writeFile(webHTML);

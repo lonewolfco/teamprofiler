@@ -1,7 +1,7 @@
 
 // manager card html function
 
-const Employee = require("../lib/Employee")
+// const Employee = require("../lib/Employee")
 
 const generateManagerCard = function (manager) {
   return
@@ -14,7 +14,7 @@ const generateManagerCard = function (manager) {
 </div>
 <ul class="list-group list-group-flush">
   <li class="list-group-item"><strong>ID:</strong> ${manager.id} </li>
-  <li class="list-group-item"><strong>Email:</strong> ${manager.email} </li>
+  <li class="list-group-item"><strong>Email:</strong> <a href="mailto:${manager.email}">${manager.email}</a></li>
   <li class="list-group-item"><strong>Office Number:</strong> ${manager.officeNum} </li>
 </ul>
 </div>
@@ -33,8 +33,8 @@ const generateEngineerCard = function (engineer) {
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><strong>ID:</strong> ${engnieer.id} </li>
-    <li class="list-group-item"><strong>Email:</strong> ${engineer.email} </li>
-    <li class="list-group-item"><strong>GitHub User:</strong> ${engineer.github} </li>
+    <li class="list-group-item"><strong>Email:</strong> <a href="mailto:${engineer.email}">${engineer.email}</a> </li>
+    <li class="list-group-item"><strong>GitHub User:</strong> <a href="https://github.com/${engineer.github}">${engineer.github}</a></li>
   </ul>
   </div>
   `
@@ -51,17 +51,53 @@ const generateInternCard = function (intern) {
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><strong>ID:</strong> ${intern.id} </li>
-    <li class="list-group-item"><strong>Email:</strong> ${intern.email} </li>
+    <li class="list-group-item"><strong>Email:</strong> <a href="mailto:${intern.email}">${intern.email}</a></li>
     <li class="list-group-item"><strong>Office Number:</strong> ${intern.school} </li>
   </ul>
   </div>
   `
 };
 
+// push card array data to the page
+generateHTML = (data) => {
 
+  // team profile cards array
+  teamProfileArray = [];
 
+  for (let i = 0; i < data.length; i++) {
+    const employee = data[i];
+    const role = employee.getRole();
 
-const generateHtml = ( answers ) => {
+    // if then to generate for each team role card
+    if (role === "Manager") {
+      const managerCard = generateManagerCard(employee);
+
+      teamProfileArray.push(managerCard);
+    }
+
+    if (role === "Engineer") {
+      const engineerCard = generateEngineerCard(employee);
+
+      teamProfileArray.push(engineerCard);
+    }
+
+    if (role === "Intern") {
+      const internCard = generateInternCard(employee);
+
+      teamProfileArray.push(internCard);
+    }
+
+  }
+
+    const teamCards = teamProfileArray.join('')
+
+    const team = indexHtmlTemplate(teamCards);
+    return team;
+
+}
+
+const indexHtmlTemplate = function ( teamCards ) {
+  return
 `
     <!DOCTYPE html>
     <html lang="en">
@@ -88,7 +124,7 @@ const generateHtml = ( answers ) => {
           <div class="row justify-content-center mt-3">
     
             <!-- cards go here -->   
-    
+            ${teamCards}
     
             </div>
     
@@ -101,4 +137,4 @@ const generateHtml = ( answers ) => {
     `
 };
 
- module.exports = generateHtml;
+ module.exports = generateHTML;

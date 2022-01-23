@@ -11,12 +11,12 @@ test('creates Manager object', () => {
 test('gets manager office number value', () => {
     const manager = new Manager('Lo', 7, 'loselby@icloud.com', '1234567890');
 
-    expect(manager.getOfficeNum).toEqual(expect.stringContaining(intern.officeNum.toString()));
+    expect(manager.getOfficeNum()).toEqual(expect.stringContaining(manager.officeNum.toString()));
 });
 
 // getRole test for Engineer role
 test('gets Manager role for Employee', () => {
     const manager = new Manager('Lo', 7, 'loselby@icloud.com', '1234567890');
 
-    expect(employee.getRole()).toEqual('Manager');
+    expect(manager.getRole()).toEqual('Manager');
 })
