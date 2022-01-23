@@ -1,18 +1,22 @@
 
 // manager card html function
 
+const Employee = require("../lib/Employee")
+
 const generateManagerCard = function (manager) {
   return
 `  
-<div class="card mx-auto shadow-lg" style="width: 18rem;">
-  <div class="card-body bg-secondary bg-gradient bg-opacity-75 text-dark">
-    <h5 class="card-title p-3 fs-4 fw-bold">${manager.name}/h5>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><strong>ID:</strong> ${manager.id}</li>
-    <li class="list-group-item"><strong>Email:</strong> ${manager.email} </li>
-    <li class="list-group-item"><strong>Office Number:</strong> ${manager.officeNum}</li>
-  </ul>
+    
+<div class="card mx-auto shadow-lg m-3" style="width: 18rem;">
+<div class="card-body bg-secondary bg-gradient bg-opacity-75 text-dark">
+  <h4 class="card-title fs-4 fw-bold">${manager.name}</h4>
+  <h6 class="card-title fs-6 fw-bold">Manager</h6>
+</div>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item"><strong>ID:</strong> ${manager.id} </li>
+  <li class="list-group-item"><strong>Email:</strong> ${manager.email} </li>
+  <li class="list-group-item"><strong>Office Number:</strong> ${manager.officeNum} </li>
+</ul>
 </div>
 `
 
@@ -22,18 +26,17 @@ const generateManagerCard = function (manager) {
 const generateEngineerCard = function (engineer) {
   return
   `
-  <div class="mt-4">
-  <div class="card shadow-lg mx-auto" style="width: 18rem;">
-    <div class="card-body bg-secondary bg-gradient bg-opacity-50 text-dark">
-      <h5 class="card-title p-3 fs-4 fw-bold">${engineer.name}</h5>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item"><strong>ID:</strong> ${engineer.id} </li>
-      <li class="list-group-item"><strong>Email:</strong> ${engineer.email} </li>
-      <li class="list-group-item"><strong>GitHub:</strong> ${engineer.github} </li>
-    </ul>
+  <div class="card mx-auto shadow-lg m-3" style="width: 18rem;">
+  <div class="card-body bg-secondary bg-gradient bg-opacity-75 text-dark">
+    <h4 class="card-title fs-4 fw-bold">${engineer.name}</h4>
+    <h6 class="card-title fs-6 fw-bold">Manager</h6>
   </div>
-</div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><strong>ID:</strong> ${engnieer.id} </li>
+    <li class="list-group-item"><strong>Email:</strong> ${engineer.email} </li>
+    <li class="list-group-item"><strong>GitHub User:</strong> ${engineer.github} </li>
+  </ul>
+  </div>
   `
 };
 
@@ -41,32 +44,36 @@ const generateEngineerCard = function (engineer) {
 const generateInternCard = function (intern) {
   return
   `
-  <div class="mt-4">
-  <div class="card shadow-lg mx-auto" style="width: 18rem;">
-    <div class="card-body bg-secondary bg-gradient bg-opacity-50 text-dark">
-      <h5 class="card-title p-3 fs-4 fw-bold">${intern.name}</h5>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item"><strong>ID:</strong> ${intern.id} </li>
-      <li class="list-group-item"><strong>Email:</strong> ${intern.email} </li>
-      <li class="list-group-item"><strong>School:</strong> ${intern.school} </li>
-    </ul>
+  <div class="card mx-auto shadow-lg m-3" style="width: 18rem;">
+  <div class="card-body bg-secondary bg-gradient bg-opacity-75 text-dark">
+    <h4 class="card-title fs-4 fw-bold">${intern.name}</h4>
+    <h6 class="card-title fs-6 fw-bold">Manager</h6>
   </div>
-</div>
-
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><strong>ID:</strong> ${intern.id} </li>
+    <li class="list-group-item"><strong>Email:</strong> ${intern.email} </li>
+    <li class="list-group-item"><strong>Office Number:</strong> ${intern.school} </li>
+  </ul>
+  </div>
   `
 };
 
 
-const generateHtml = ( answers ) => {
 
-    `<!DOCTYPE html>
+
+const generateHtml = ( answers ) => {
+`
+    <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Team Profiler</title>
+        <!-- JavaScript Bundle with Popper -->
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"></body>
+    
     </head>
     <body>
         <nav class="navbar  navbar-light bg-dark bg-gradient py-5">
@@ -74,41 +81,23 @@ const generateHtml = ( answers ) => {
               <a class="navbar-brand mx-auto text-light h1 fs-1" href="#">Team Profiler</a>
             </div>
           </nav>
-    <!-- Manager Card Section -->
-    <div class="py-4 row align-items-center">
     
-          <div class="col-12">
-              <h1 class="text-center">Manager</h1>
-            <!-- card container -->
-              <div class="mt-3">
-
-    <!-- manager card goes here -->
+    <!-- Employee Card Section-->
+    <div class="container d-flex">
     
-              </div>
+          <div class="row justify-content-center mt-3">
+    
+            <!-- cards go here -->   
+    
+    
             </div>
     
         </div>
     
-    <!-- Engineer & Intern Card Section -->
-    <div class=" row justify-content-between">
-    
-      <div class="py-5 col-12 col-sm-6  mx-auto">
-          <h1 class="text-center">Engineers</h1>
-    
-      <!-- engineer card goes here -->
-
     
     
-    </div>
-    
-    
-    <div class="py-5 col-12 col-sm-6 justify-content-center">
-      <h1 class="text-center">Interns</h1>
-    
-      <!-- intern card goes here -->
-
-    
-    </div>
+          <script src="index.js"></script>
+    </html>
     `
 };
 

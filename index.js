@@ -1,15 +1,14 @@
 // node modules
-var inquirer = require('inquirer');
+const inquirer = require('inquirer');
 const fs = require('fs');
 // link to webpage creator js
 const generateHtml = require ('./src/generateHTML.js');
 // link to team profile js files
-const employee = require ('./lib/Employee.js');
-const engineer = require ('./lib/Engineer.js');
-const intern = require ('./lib/Intern.js');
-const manager = require ('./lib/Manager.js');
-// link to bootstrap 
-const bootstrap = require('bootstrap');
+// const Employee = require ('./lib/Employee.js');
+const Engineer = require ('./lib/Engineer.js');
+const Intern = require ('./lib/Intern.js');
+const Manager = require ('./lib/Manager.js');
+
 
 
 // teamprofile array
@@ -194,7 +193,7 @@ const managerQuestions = () => {
         teamProfile.push(employee); 
 
         if (addMore) {
-            return addEmployee(teamProfile); 
+            return employeeQuestions(teamProfile); 
         } else {
             return teamProfile;
         }
